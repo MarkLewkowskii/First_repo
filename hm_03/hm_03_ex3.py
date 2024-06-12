@@ -1,17 +1,6 @@
 import re
-elements = [
-"    +38(050)123-32-34",
-"     0503451234",
-"(050)8889900",
-"38050-111-1111",
-"38050 111 22 11   ",
-"'+48    736-241*295'",
-"+1 800-555-5555", 
-"+44 20 7946 0958",  
-    "+49 30 123456",
-]
+# Завдання №3
 
-  
 def normalize_phone(phone_number):
     #phone_cleaned = re.sub(r'\D','', phone_number)
     phone_cleaned = re.sub(r'[^\d+]', '', phone_number)
@@ -25,9 +14,18 @@ def normalize_phone(phone_number):
         total_number = phone_cleaned
     return total_number
 
+raw_numbers = [
+    "067\\t123 4567",
+    "(095) 234-5678\\n",
+    "+380 44 123 4567",
+    "380501234567",
+    "    +38(050)123-32-34",
+    "     0503451234",
+    "(050)8889900",
+    "38050-111-22-22",
+    "38050 111 22 11   ",
+    "+48- 12 .//3456789"
+]
 
-list_of_numbers = list(map(normalize_phone, elements))
-print(list_of_numbers)
-
-
-
+sanitized_numbers = list(map(normalize_phone, raw_numbers))
+print("Нормалізовані номери телефонів для SMS-розсилки:", sanitized_numbers)
